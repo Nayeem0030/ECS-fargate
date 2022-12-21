@@ -1,1 +1,2 @@
-# ECS-fargate
+# ecs-cloudformation
+ecs-demo
