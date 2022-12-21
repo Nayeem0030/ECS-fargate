@@ -13,13 +13,13 @@ phases:
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG 
       # - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG public.ecr.aws/publicrepoid/$IMAGE_REPO_NAME:$IMAGE_TAG
       - docker build -t $IMAGE_REPO_NAME1:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME1:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME1:$IMAGE_TAG 
+     # - docker tag $IMAGE_REPO_NAME1:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME1:$IMAGE_TAG 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME1:$IMAGE_TAG
+   #   - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME1:$IMAGE_TAG
 
       # - aws cloudformation deploy --template-file ./templates/ecs-fargate.yaml --stack-name mydemoproject-app-$ENV_STAGE-ecs-fargate --s3-bucket $DEPLOYMENT_BUCKET_NAME --parameter-overrides $(cat myproject-app-ecs-fargate.$ENV_STAGE.properties) --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset
       - aws cloudformation deploy --template-file ./templates/ecs-fargat.yaml --stack-name mydemoproject-app-$ENV_STAGE-ecs-fargate --s3-bucket $DEPLOYMENT_BUCKET_NAME --parameter-overrides $(cat myproject-app-ecs-fargate.$ENV_STAGE.properties) --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset
