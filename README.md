@@ -1,2 +1,2 @@
 # ecs-cloudformation
-ecs-demos
+ecs-demo
