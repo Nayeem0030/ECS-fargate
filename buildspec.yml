@@ -22,7 +22,7 @@ phases:
    #   - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME1:$IMAGE_TAG
 
       # - aws cloudformation deploy --template-file ./templates/ecs-fargate.yaml --stack-name mydemoproject-app-$ENV_STAGE-ecs-fargate --s3-bucket $DEPLOYMENT_BUCKET_NAME --parameter-overrides $(cat myproject-app-ecs-fargate.$ENV_STAGE.properties) --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset
-      - aws cloudformation deploy --template-file ./templates/ecs-fargate.yaml --stack-name mydemoproject-app-$ENV_STAGE-ecs-fargate --s3-bucket $DEPLOYMENT_BUCKET_NAME --parameter-overrides $(cat mydemoproject-app-ecs-fargate.$ENV_STAGE.properties) --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset
+      - aws cloudformation deploy --template-file ./templates/ecs-fargate.yaml --stack-name mydemoproject-app-$ENV_STAGE-ecs-fargate --s3-bucket $DEPLOYMENT_BUCKET_NAME --parameter-overrides $(cat myproject-app-ecs-fargate.$ENV_STAGE.properties) --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset
       
       # - aws ecs update-service --cluster mydemoproject-ecs-Cluster --service mydemoproject-ecs --force-new-deployment
       - aws ecs update-service --cluster myproject-ecs-demo-Cluster --service myproject-ecs-demo --force-new-deployment
